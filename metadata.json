@@ -1,0 +1,6 @@
+{
+  "name": "Nexus Studio - Digital Web Platform",
+  "description": "Production-grade website and client portal webapp featuring real-time project estimation, interactive consultation scheduler, case studies, live site customization, and inquiry management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

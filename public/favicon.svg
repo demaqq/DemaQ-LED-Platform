@@ -1,0 +1,59 @@
+<svg viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fav-shield" x1="15%" y1="10%" x2="85%" y2="90%">
+      <stop offset="0%" stopColor="#e5a73b" />
+      <stop offset="25%" stopColor="#38bdf8" />
+      <stop offset="65%" stopColor="#0284c7" />
+      <stop offset="100%" stopColor="#0369a1" />
+    </linearGradient>
+  </defs>
+
+  <!-- Outer Beveled Hexagonal "D" Ring with Left Opening -->
+  <path
+    d="
+      M 32 68
+      L 32 50
+      C 32 46, 34 43, 37 40
+      L 61 16
+      C 64 13, 68 12, 72 12
+      L 100 12
+      C 105 12, 109 14, 112 17
+      L 141 46
+      C 144 49, 146 53, 146 58
+      L 146 122
+      C 146 127, 144 131, 141 134
+      L 112 163
+      C 109 166, 105 168, 100 168
+      L 72 168
+      C 68 168, 64 167, 61 164
+      L 37 140
+      C 34 137, 32 134, 32 130
+      L 32 112
+      L 48 112
+      L 48 124
+      L 68 144
+      L 96 144
+      L 122 118
+      L 122 62
+      L 96 36
+      L 68 36
+      L 48 56
+      L 48 68
+      Z
+    "
+    fill="url(#fav-shield)"
+  />
+
+  <!-- Inner Robot Mascot Outline -->
+  <path d="M 89 46 L 89 54" stroke="#38bdf8" strokeWidth="4" strokeLinecap="round" />
+  <circle cx="89" cy="44" r="3" fill="#e5a73b" />
+
+  <rect x="59" y="54" width="60" height="54" rx="14" fill="#020617" stroke="#38bdf8" strokeWidth="4" />
+  <rect x="53" y="71" width="6" height="18" rx="3" fill="#0284c7" />
+  <rect x="119" y="71" width="6" height="18" rx="3" fill="#0284c7" />
+
+  <circle cx="78" cy="79" r="5" fill="#38bdf8" />
+  <circle cx="100" cy="79" r="5" fill="#38bdf8" />
+
+  <path d="M 83 93 Q 89 97 95 93" fill="none" stroke="#38bdf8" strokeWidth="3.5" strokeLinecap="round" />
+</svg>

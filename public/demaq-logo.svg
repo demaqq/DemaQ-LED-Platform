@@ -1,0 +1,146 @@
+<svg viewBox="0 0 440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- The signature D-ring gradient: amber at top-left to vibrant blue -->
+    <linearGradient id="demaq-d-shield-full" x1="15%" y1="15%" x2="85%" y2="85%">
+      <stop offset="0%" stopColor="#f59e0b" />
+      <stop offset="25%" stopColor="#38bdf8" />
+      <stop offset="65%" stopColor="#0284c7" />
+      <stop offset="100%" stopColor="#0369a1" />
+    </linearGradient>
+
+    <!-- Golden Q Slash Gradient -->
+    <linearGradient id="demaq-gold-slash" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stopColor="#fbbf24" />
+      <stop offset="50%" stopColor="#f59e0b" />
+      <stop offset="100%" stopColor="#d97706" />
+    </linearGradient>
+  </defs>
+
+  <!-- 1. Official Beveled Hexagonal "D" Ring with Left Opening -->
+  <g id="official-d-and-robot">
+    <path
+      d="
+        M 22 50
+        L 22 36
+        L 38 16
+        L 70 16
+        L 98 44
+        L 98 76
+        L 70 104
+        L 38 104
+        L 22 84
+        L 22 70
+        L 34 70
+        L 34 78
+        L 44 88
+        L 64 88
+        L 82 70
+        L 82 50
+        L 64 32
+        L 44 32
+        L 34 42
+        L 34 50
+        Z
+      "
+      fill="url(#demaq-d-shield-full)"
+    />
+
+    <!-- Official Robot Mascot Inside the D -->
+    <!-- Top Antenna -->
+    <path
+      d="M 58 30 L 58 37"
+      stroke="#ffffff"
+      stroke-width="2.2"
+      stroke-linecap="round"
+    />
+    <circle cx="58" cy="28" r="2" fill="#f59e0b" />
+
+    <!-- Robot Head Body -->
+    <rect
+      x="40"
+      y="38"
+      width="36"
+      height="34"
+      rx="8"
+      fill="#030712"
+      stroke="#ffffff"
+      stroke-width="2.4"
+    />
+
+    <!-- Ears -->
+    <rect x="36" y="48" width="4" height="14" rx="2" fill="#ffffff" />
+    <rect x="76" y="48" width="4" height="14" rx="2" fill="#ffffff" />
+
+    <!-- Screen Frame -->
+    <rect
+      x="45"
+      y="43"
+      width="26"
+      height="23"
+      rx="5"
+      fill="none"
+      stroke="#ffffff"
+      stroke-width="1.6"
+    />
+
+    <!-- Eyes & Smile -->
+    <circle cx="52" cy="51" r="2.2" fill="#38bdf8" />
+    <circle cx="64" cy="51" r="2.2" fill="#38bdf8" />
+    <path
+      d="M 54 58 Q 58 61 62 58"
+      stroke="#38bdf8"
+      stroke-width="1.8"
+      stroke-linecap="round"
+      fill="none"
+    />
+  </g>
+
+  <!-- 2. Official Brand Typography -->
+  <g id="official-typography">
+    <!-- Word: Dema -->
+    <text
+      x="122"
+      y="68"
+      font-family="'Plus Jakarta Sans', 'Syne', system-ui, -apple-system, sans-serif"
+      font-size="58"
+      font-weight="800"
+      letter-spacing="-0.02em"
+      fill="#ffffff"
+    >
+      Dema
+    </text>
+
+    <!-- Letter: Q (Circle + Signature Diagonal Golden Amber Slash) -->
+    <g id="letter-q-group">
+      <!-- Round Q Bowl -->
+      <circle
+        cx="312"
+        cy="51"
+        r="19"
+        stroke="#ffffff"
+        stroke-width="9"
+        fill="none"
+      />
+      <!-- Solid Golden Amber Slash Tail -->
+      <path
+        d="M 308 51 L 332 76"
+        stroke="url(#demaq-gold-slash)"
+        stroke-width="9"
+        stroke-linecap="round"
+      />
+    </g>
+
+    <!-- Subtitle: Digital Solution -->
+    <text
+      x="124"
+      y="97"
+      font-family="'Plus Jakarta Sans', system-ui, -apple-system, sans-serif"
+      font-size="24"
+      font-weight="600"
+      letter-spacing="0.08em"
+      fill="#94a3b8"
+    >
+      Digital Solution
+    </text>
+  </g>
+</svg>

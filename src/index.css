@@ -1,0 +1,311 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-display: 'Syne', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+}
+
+/* ==========================================================================
+   CSS Variable-Based Theme System with Hardware-Accelerated Transitions
+   Eliminates rendering lag during dark/light switches via will-change
+   ========================================================================== */
+
+:root {
+  --theme-transition-duration: 0.15s;
+  --theme-transition-timing: cubic-bezier(0.4, 0, 0.2, 1);
+  --theme-bg-transition: background-color var(--theme-transition-duration) var(--theme-transition-timing),
+                         color var(--theme-transition-duration) var(--theme-transition-timing);
+
+  /* Default Darkish Blue Cyber-LED Theme Variables */
+  --bg-primary: #091226;
+  --bg-secondary: #0e1c3a;
+  --bg-card: rgba(14, 28, 58, 0.88);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-subtle: #1c3567;
+  --accent-cyan: #38bdf8;
+  --accent-amber: #f59e0b;
+}
+
+/* Warm DemaQ Orange/Amber Light Theme Variables */
+:root[data-theme="light"],
+html.light {
+  color-scheme: light;
+  --bg-primary: #fcf8f2;
+  --bg-secondary: #fffdfa;
+  --bg-card: #ffffff;
+  --text-primary: #1c1917;
+  --text-secondary: #44403c;
+  --border-subtle: #fed7aa;
+}
+
+/* Darkish Blue Theme Variables (Rich Aerospace Navy / Deep Sapphire Blue) */
+:root[data-theme="dark"],
+html.dark {
+  color-scheme: dark;
+  --bg-primary: #091226;
+  --bg-secondary: #0e1c3a;
+  --bg-card: rgba(14, 28, 58, 0.88);
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --border-subtle: #1c3567;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+}
+
+/* Optimized theme transition using CSS variables & will-change */
+html, body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  will-change: background-color, color;
+  transition: var(--theme-bg-transition);
+}
+
+/* Ensure crisp contrast for placeholder and subtext in light mode */
+html.light ::placeholder {
+  color: #78716c;
+  opacity: 1;
+}
+
+html.light .text-slate-400 {
+  color: #44403c;
+}
+
+html.light .text-slate-500 {
+  color: #292524;
+}
+
+/* ==========================================================================
+   DemaQ Warm Orange / Amber Light Theme System
+   Elegantly tinted light background with orange/amber logo highlights,
+   solid white cards, crisp warm borders, and proportional drop shadows.
+   ========================================================================== */
+
+/* 1. Opaque High-Contrast White Cards with Warm DemaQ Orange/Amber Tinted Borders */
+html.light .bg-white {
+  background-color: #ffffff !important;
+  border-color: #fed7aa !important;
+  box-shadow: 
+    0 12px 32px -4px rgba(217, 119, 6, 0.08),
+    0 4px 12px -2px rgba(28, 25, 23, 0.05) !important;
+}
+
+/* 2. Glassmorphic Navigation Bar with Soft Warm Amber Translucency */
+html.light header {
+  background-color: rgba(253, 250, 245, 0.94) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom-color: #fed7aa !important;
+  box-shadow: 
+    0 6px 20px -2px rgba(217, 119, 6, 0.08) !important;
+}
+
+/* 3. Form inputs with warm white fill and orange/amber focus border */
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #ffffff !important;
+  border-color: #fdba74 !important;
+  color: #1c1917 !important;
+}
+
+/* 4. Elevated Card Containers & Micro-Boundaries */
+html.light .rounded-2xl.border,
+html.light .rounded-3xl.border {
+  border-color: #fed7aa !important;
+}
+
+/* 5. Deep distinct drop shadows for maximum visibility */
+html.light .shadow-sm,
+html.light .shadow-xs {
+  box-shadow: 
+    0 2px 8px -1px rgba(217, 119, 6, 0.08), 
+    0 1px 3px -1px rgba(28, 25, 23, 0.04) !important;
+}
+
+html.light .shadow-md {
+  box-shadow: 
+    0 8px 20px -2px rgba(217, 119, 6, 0.10), 
+    0 3px 8px -1px rgba(28, 25, 23, 0.05) !important;
+}
+
+html.light .shadow-lg,
+html.light .shadow-xl,
+html.light .shadow-2xl {
+  box-shadow: 
+    0 16px 38px -4px rgba(217, 119, 6, 0.12), 
+    0 6px 16px -2px rgba(28, 25, 23, 0.06) !important;
+}
+
+/* 6. Inner Metric Tiles and Spec Boxes with Soft DemaQ Warm Orange/Amber Tint */
+html.light .bg-slate-50,
+html.light .bg-slate-100\/70 {
+  background-color: #fff7ed !important;
+  border-color: #fed7aa !important;
+  box-shadow: 0 1px 4px rgba(217, 119, 6, 0.05) !important;
+}
+
+/* 7. Modal Drawers, Dropdowns & Floating Tooltips in Warm High-Contrast Glass */
+html.light .fixed .bg-white,
+html.light .absolute.bg-white,
+html.light .shadow-2xl[class*="backdrop-blur"] {
+  background-color: #ffffff !important;
+  border-color: #fdba74 !important;
+  box-shadow: 
+    0 24px 50px -12px rgba(217, 119, 6, 0.15),
+    0 8px 18px -4px rgba(28, 25, 23, 0.08) !important;
+}
+
+/* 8. Headings depth in light mode: deep obsidian black with crisp tracking */
+html.light h1,
+html.light h2,
+html.light h3,
+html.light h4 {
+  color: #020617;
+  letter-spacing: -0.015em;
+}
+
+/* 9. High-contrast body typography for effortless readability over glass */
+html.light p {
+  color: #1e293b;
+}
+
+html.light .text-slate-600 {
+  color: #1e293b;
+}
+
+html.light .text-slate-700 {
+  color: #0f172a;
+}
+
+/* 10. Image containers get a crisp outline so images float above frosted glass */
+html.light .overflow-hidden.aspect-\[16\/9\],
+html.light .overflow-hidden.aspect-\[4\/3\],
+html.light .overflow-hidden.aspect-\[21\/9\] {
+  box-shadow: 0 4px 14px -2px rgba(15, 23, 42, 0.1);
+  border: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+/* 11. Floating badges on images */
+html.light .absolute span.font-mono,
+html.light .absolute div.font-mono {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+}
+
+.font-display {
+  font-family: var(--font-display);
+}
+
+/* DemaQ subtle LED pixel grid backdrop */
+.demaq-grid-bg {
+  background-size: 40px 40px;
+  background-image: 
+    linear-gradient(to right, rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+}
+
+html.light .demaq-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(217, 119, 6, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.04) 1px, transparent 1px);
+}
+
+/* Low-Opacity Digital LED Engineering Grid Overlay */
+.led-grid-pattern {
+  background-size: 36px 36px;
+  background-image: 
+    linear-gradient(to right, rgba(217, 119, 6, 0.055) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(217, 119, 6, 0.055) 1px, transparent 1px);
+}
+
+/* Custom subtle scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(34, 211, 238, 0.4);
+}
+
+/* ==========================================================================
+   DemaQ Darkish Blue Theme System (Deep Aerospace Navy & Cobalt)
+   Replaces pure pitch black with deep darkish blue tones
+   ========================================================================== */
+
+/* 1. Base dark background & text */
+html.dark,
+html.dark body {
+  background-color: #091226 !important;
+  color: #f1f5f9 !important;
+}
+
+/* 2. Map deep black classes to rich darkish blue */
+html.dark .bg-slate-950,
+html.dark .bg-black {
+  background-color: #091226 !important;
+}
+
+html.dark .bg-black\/75,
+html.dark .bg-black\/80,
+html.dark .bg-black\/70,
+html.dark .bg-black\/50 {
+  background-color: rgba(9, 18, 38, 0.85) !important;
+}
+
+html.dark .bg-slate-950\/95,
+html.dark .bg-slate-950\/90,
+html.dark .bg-slate-950\/85,
+html.dark .bg-slate-950\/80,
+html.dark .bg-slate-950\/60 {
+  background-color: rgba(9, 18, 38, 0.94) !important;
+}
+
+html.dark .bg-slate-900 {
+  background-color: #0e1c3a !important;
+}
+
+html.dark .bg-slate-900\/90,
+html.dark .bg-slate-900\/80,
+html.dark .bg-slate-900\/60,
+html.dark .bg-slate-900\/40 {
+  background-color: rgba(14, 28, 58, 0.86) !important;
+}
+
+html.dark .border-slate-800 {
+  border-color: #1c3567 !important;
+}
+
+html.dark .border-slate-800\/80,
+html.dark .border-slate-800\/60 {
+  border-color: rgba(28, 53, 103, 0.7) !important;
+}
+
+html.dark .border-slate-700 {
+  border-color: #244686 !important;
+}
+
+html.dark header {
+  background-color: rgba(9, 18, 38, 0.92) !important;
+  border-bottom-color: #1c3567 !important;
+  box-shadow: 0 8px 32px rgba(9, 18, 38, 0.6) !important;
+}
+
+html.dark .demaq-grid-bg {
+  background-image: 
+    linear-gradient(to right, rgba(56, 189, 248, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(56, 189, 248, 0.05) 1px, transparent 1px);
+}
+

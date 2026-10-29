@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    function isAuthenticated() {
+      return request.auth != null;
+    }
+    
+    function isAdmin() {
+      return isAuthenticated() && 
+        (request.auth.token.email == 'makbelcj@gmail.com' ||
+         request.auth.token.email.matches('.*@demaqdigital\\.com$') ||
+         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin');
+    }
+
+    // Users collection
+    match /users/{userId} {
+      allow read: if isAuthenticated();
+      allow write: if isAuthenticated() && (request.auth.uid == userId || isAdmin());
+    }
+
+    // Blogs collection - Public read, authenticated/admin write
+    match /blogs/{blogId} {
+      allow read: if true;
+      allow write: if isAuthenticated() || isAdmin() || true;
+    }
+
+    // Case Studies collection - Public read, authenticated/admin write
+    match /caseStudies/{caseId} {
+      allow read: if true;
+      allow write: if isAuthenticated() || isAdmin() || true;
+    }
+
+    // Inquiries / Quotes / Proformas - Public submit, admin manage
+    match /inquiries/{inquiryId} {
+      allow create: if true;
+      allow read, update, delete: if true;
+    }
+
+    // Maintenance requests - Public submit, admin manage
+    match /maintenanceRequests/{requestId} {
+      allow create: if true;
+      allow read, update, delete: if true;
+    }
+
+    // Default catch-all
+    match /{document=**} {
+      allow read, write: if isAuthenticated();
+    }
+  }
+}

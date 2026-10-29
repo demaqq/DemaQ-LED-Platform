@@ -1,0 +1,142 @@
+{
+  "entities": {
+    "users": {
+      "title": "User Profiles",
+      "description": "Authenticated user accounts and role-based access",
+      "type": "object",
+      "properties": {
+        "uid": { "type": "string" },
+        "email": { "type": "string", "format": "email" },
+        "displayName": { "type": "string" },
+        "photoURL": { "type": "string" },
+        "role": { "type": "string", "enum": ["admin", "operator", "client"] },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["uid", "email", "role"]
+    },
+    "blogs": {
+      "title": "Blog Articles",
+      "description": "Technical and industry blog posts for DemaQ Digital Solution",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "title": { "type": "string" },
+        "category": { "type": "string", "enum": ["Technical", "Industry News", "Projects", "Buyer Guide", "Processors & Systems"] },
+        "excerpt": { "type": "string" },
+        "content": { "type": "string" },
+        "readTime": { "type": "string" },
+        "date": { "type": "string" },
+        "image": { "type": "string" },
+        "tags": { "type": "array", "items": { "type": "string" } },
+        "author": { "type": "string" },
+        "published": { "type": "boolean" },
+        "automated": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "title", "category", "excerpt"]
+    },
+    "caseStudies": {
+      "title": "Case Studies",
+      "description": "LED display installation case studies and project benchmarks",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "client": { "type": "string" },
+        "projectName": { "type": "string" },
+        "location": { "type": "string" },
+        "category": { "type": "string" },
+        "pitch": { "type": "string" },
+        "packaging": { "type": "string" },
+        "screenDimensions": { "type": "string" },
+        "totalArea": { "type": "string" },
+        "resolution": { "type": "string" },
+        "image": { "type": "string" },
+        "challenge": { "type": "string" },
+        "solution": { "type": "string" },
+        "metrics": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "label": { "type": "string" },
+              "value": { "type": "string" }
+            },
+            "required": ["label", "value"]
+          }
+        },
+        "technologies": { "type": "array", "items": { "type": "string" } },
+        "automated": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "client", "projectName", "category", "pitch"]
+    },
+    "inquiries": {
+      "title": "RFQs & Proforma Inquiries",
+      "description": "Customer quote requests and proforma calculations",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientName": { "type": "string" },
+        "company": { "type": "string" },
+        "email": { "type": "string" },
+        "phone": { "type": "string" },
+        "application": { "type": "string" },
+        "seriesInterest": { "type": "string" },
+        "pixelPitch": { "type": "string" },
+        "availabilityRequirement": { "type": "string" },
+        "dimensionsWidthM": { "type": "number" },
+        "dimensionsHeightM": { "type": "number" },
+        "installationType": { "type": "string" },
+        "projectLocation": { "type": "string" },
+        "budgetRange": { "type": "string" },
+        "details": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string", "enum": ["new", "engineering_review", "quotation_sent", "won", "closed"] }
+      },
+      "required": ["id", "clientName", "phone", "pixelPitch"]
+    },
+    "maintenanceRequests": {
+      "title": "Maintenance Tickets",
+      "description": "LED screen repair and emergency maintenance requests",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string" },
+        "clientName": { "type": "string" },
+        "company": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "screenLocation": { "type": "string" },
+        "pixelPitch": { "type": "string" },
+        "controllerBrand": { "type": "string" },
+        "issueType": { "type": "string" },
+        "description": { "type": "string" },
+        "urgency": { "type": "string" },
+        "timestamp": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending_quote", "technician_assigned", "in_progress", "resolved"] }
+      },
+      "required": ["id", "clientName", "phone", "issueType", "urgency"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": "users",
+      "description": "User profile collection"
+    },
+    "/blogs/{blogId}": {
+      "schema": "blogs",
+      "description": "Public and admin blog articles"
+    },
+    "/caseStudies/{caseId}": {
+      "schema": "caseStudies",
+      "description": "Public and admin project case studies"
+    },
+    "/inquiries/{inquiryId}": {
+      "schema": "inquiries",
+      "description": "Customer quotation and proforma requests"
+    },
+    "/maintenanceRequests/{requestId}": {
+      "schema": "maintenanceRequests",
+      "description": "Screen maintenance and emergency repair tickets"
+    }
+  }
+}
